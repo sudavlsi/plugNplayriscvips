@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Pages Site</title>
+    <meta charset="UTF-8">
+    <title>User Input Page</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        #display-area { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    </style>
 </head>
 <body>
-    <h1>Hello world!</h1>
-    <p>Welcome to my GitHub Pages site!</p>
+
+    <h2>Add Your Information</h2>
+    <form id="userForm">
+        <div class="input-group">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" placeholder="Enter your name" required>
+        </div>
+        
+        <div class="input-group">
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" placeholder="email@example.com">
+        </div>
+
+        <div class="input-group">
+            <label for="userMessage">Message:</label>
+            <textarea id="userMessage" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Add to List</button>
+    </form>
+
+    <div id="display-area">
+        <h3>Submitted Entries:</h3>
+        <ul id="entryList"></ul>
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents the page from reloading
+            
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const msg = document.getElementById('userMessage').value;
+
+            // Create a new list item for the entry
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${name}</strong> (${email}): ${msg}`;
+            
+            document.getElementById('entryList').appendChild(li);
+            
+            this.reset(); // Clear the form for the next entry
+        });
+    </script>
+
 </body>
 </html>
