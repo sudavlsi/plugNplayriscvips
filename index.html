@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>User Input Page</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        .input-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; }
-        #display-area { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
-    </style>
+  <title>Dropdown Example</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+    label {
+      font-size: 20px;
+      color: #00ffff;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      background-color: #111;
+      color: #00ffff;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #00ffff;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #00cccc;
+    }
+  </style>
+
+  <script>
+    function runSelection() {
+      var fruit = document.getElementById("fruits").value;
+      alert("You selected: " + fruit);
+    }
+  </script>
 </head>
 <body>
 
-    <h2>Add Your Information</h2>
-    <form id="userForm">
-        <div class="input-group">
-            <label for="userName">Name:</label>
-            <input type="text" id="userName" placeholder="Enter your name" required>
-        </div>
-        
-        <div class="input-group">
-            <label for="userEmail">Email:</label>
-            <input type="email" id="userEmail" placeholder="email@example.com">
-        </div>
-
-        <div class="input-group">
-            <label for="userMessage">Message:</label>
-            <textarea id="userMessage" rows="4"></textarea>
-        </div>
-
-        <button type="submit">Add to List</button>
-    </form>
-
-    <div id="display-area">
-        <h3>Submitted Entries:</h3>
-        <ul id="entryList"></ul>
-    </div>
-
-    <script>
-        document.getElementById('userForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevents the page from reloading
-            
-            const name = document.getElementById('userName').value;
-            const email = document.getElementById('userEmail').value;
-            const msg = document.getElementById('userMessage').value;
-
-            // Create a new list item for the entry
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${name}</strong> (${email}): ${msg}`;
-            
-            document.getElementById('entryList').appendChild(li);
-            
-            this.reset(); // Clear the form for the next entry
-        });
-    </script>
+  <div class="overlay">
+    <label for="fruits">Choose a fruit:</label>
+    <select id="fruits" name="fruits">
+      <option value="Apple">Apple</option>
+      <option value="Banana">Banana</option>
+      <option value="Orange">Orange</option>
+      <option value="Mango">Mango</option>
+    </select>
+    <br>
+    <button onclick="runSelection()">Run</button>
+  </div>
 
 </body>
 </html>
