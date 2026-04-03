@@ -56,20 +56,24 @@
 
   <script>
     function runSelection() {
-      var fruit = document.getElementById("fruits").value;
-      alert("You selected: " + fruit);
+      var CORE = document.getElementById("CORE").value;
+      alert("You selected: " + CORE);
     }
   </script>
 </head>
 <body>
 
   <div class="overlay">
-    <label for="fruits">Choose a fruit:</label>
-    <select id="fruits" name="fruits">
-      <option value="Apple">Apple</option>
-      <option value="Banana">Banana</option>
-      <option value="Orange">Orange</option>
-      <option value="Mango">Mango</option>
+    <label for="CORE">Choose a Core:</label>
+    <select id="CORE" name="CORE">
+      <option value="RV32I">RV32I</option>
+      <option value="RV64I">RV64I</option>
+    </select>
+    <br>
+    <label for="DATA_WIDTH">Choose DATA_WIDTH:</label>
+    <select id="DATA_WIDTH" name="DATA_WIDTH">
+      <option value="32">32</option>
+      <option value="64">64</option>
     </select>
     <br>
     <button onclick="runSelection()">Run</button>
